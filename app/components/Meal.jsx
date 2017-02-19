@@ -1,18 +1,34 @@
 var React = require('react');
 var {connect} = require('react-redux');
 var moment = require('moment');
+var DatePicker = require('react-datepicker');
 import * as actions from 'actions';
 
-var Meal = React.createClass({
+export var Meal = React.createClass({
   render(){
-    var { title, ingredients } = this.props;
+    var { id, title, ingredients, scheduledFor, dispatch } = this.props;
+    var renderDate = () => {
+      if (!scheduledFor) {
+        return <DatePicker placeholderText='Add to calendar' onChange={(date) => {
+            dispatch(actions.startAddToCalendar(id,date.unix()));
+        }}/>;
+      } else {
+        return <p>{moment.unix(scheduledFor).format('MMM DD, YYYY')}</p>;
+      }
+    };
+
     return (
-      <div>
-        <p>{title}</p>
-        <p>{ingredients}</p>
+      <div className='meal'>
+        <div>
+          <p>{title}</p>
+          <p className='meal__subtext'>{ingredients}</p>
+        </div>
+        <div className='date-picker'>
+          {renderDate()}
+        </div>
       </div>
     )
   }
-})
+});
 
-module.exports = Meal;
+export default connect()(Meal);

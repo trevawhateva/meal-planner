@@ -1,6 +1,6 @@
 var React = require('react');
 var {connect} = require('react-redux');
-var Meal = require('Meal');
+import Meal from 'Meal';
 
 export var MealList = React.createClass({
   render(){

@@ -1,0 +1,27 @@
+.meal {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  padding: 1rem;
+  transition: background .3s ease;
+
+  .date-picker {
+    margin-left: auto;
+  }
+
+  p, input {
+    margin: 0;
+  }
+
+  > :first-child {
+    margin-right: 1rem;
+  }
+
+  &:hover {
+    background: #F0F0F0;
+  }
+}
+
+.meal__subtext {
+  color: #999;
+}

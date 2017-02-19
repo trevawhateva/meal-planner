@@ -53,3 +53,24 @@ export var startAddMeals = () => {
     });
   };
 };
+
+export var addToCalendar = (id, updates) => {
+  return {
+    type: 'ADD_TO_CALENDAR',
+    id,
+    updates
+  };
+};
+
+export var startAddToCalendar = (id,date) => {
+  return (dispatch, getState) => {
+    var mealRef = firebaseRef.child(`meals/${id}`);
+    var updates = {
+      scheduledFor: date
+    };
+
+    return mealRef.update(updates).then(() => {
+      dispatch(addToCalendar(id, updates));
+    });
+  };
+};
