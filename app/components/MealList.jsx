@@ -4,7 +4,7 @@ import Meal from 'Meal';
 
 export var MealList = React.createClass({
   render(){
-    var {meals} = this.props;
+    var { meals } = this.props;
     var renderMeals = () => {
       if (meals.length === 0) {
         return (

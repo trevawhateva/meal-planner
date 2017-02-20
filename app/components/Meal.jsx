@@ -10,10 +10,10 @@ export var Meal = React.createClass({
     var renderDate = () => {
       if (!scheduledFor) {
         return <DatePicker placeholderText='Add to calendar' onChange={(date) => {
-            dispatch(actions.startAddToCalendar(id,date.unix()));
+            dispatch(actions.startAddToCalendar(id, date.format('MMM DD, YYYY')));
         }}/>;
       } else {
-        return <p>{moment.unix(scheduledFor).format('MMM DD, YYYY')}</p>;
+        return <p>{scheduledFor}</p>;
       }
     };
 
