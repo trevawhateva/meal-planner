@@ -8,7 +8,11 @@ export var MealList = React.createClass({
     var renderMeals = () => {
       if (meals.length === 0) {
         return (
-          <p className="container__message">No meals added yet!</p>
+          <div className='row meal'>
+            <div className='column large-8'>
+              <p className="container__message">No meals added yet!</p>
+            </div>
+          </div>
         );
       } else {
         return meals.map((meal) => {
