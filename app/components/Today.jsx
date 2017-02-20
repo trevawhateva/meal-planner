@@ -22,11 +22,12 @@ export var Today = React.createClass({
         return <h3>No meals scheduled for today!</h3>
       }
     }
+    
     return (
       <div>
         <h1 className="page-title">Today's Meals</h1>
         <div className="row">
-          <div className="column small-centered small-11 medium-6 large-5">
+          <div className="column small-centered small-11 medium-8 large-7">
             <div className="container">
               {renderToday()}
             </div>

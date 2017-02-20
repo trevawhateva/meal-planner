@@ -18,12 +18,12 @@ export var Meal = React.createClass({
     };
 
     return (
-      <div className='meal'>
-        <div>
+      <div className='row meal'>
+        <div className='column large-8'>
           <p>{title}</p>
           <p className='meal__subtext'>{ingredients}</p>
         </div>
-        <div className='date-picker'>
+        <div className='column large-4 date-picker'>
           {renderDate()}
         </div>
       </div>
