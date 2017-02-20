@@ -11,10 +11,16 @@ export var mealsReducer = (state = [], action) => {
         ...action.meals
       ];
     case 'ADD_TO_CALENDAR':
-      return [
-        ...state,
-        action.meal.scheduledFor
-      ];
+      return state.map((meal) => {
+        if (meal.id === action.id) {
+          return {
+            ...meal,
+            ...action.updates
+          };
+        } else {
+          return meal;
+        }
+      });
     default:
       return state;
   }

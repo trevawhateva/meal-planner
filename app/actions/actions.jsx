@@ -70,7 +70,7 @@ export var startAddToCalendar = (id,date) => {
     };
 
     return mealRef.update(updates).then(() => {
-      dispatch(addToCalendar(id, updates));
+      dispatch(addToCalendar(id,updates));
     });
   };
 };

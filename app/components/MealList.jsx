@@ -11,7 +11,6 @@ export var MealList = React.createClass({
           <p className="container__message">No meals added yet!</p>
         );
       } else {
-        console.log(meals[0]);
         return meals.map((meal) => {
           return (
             <Meal key={meal.id} {...meal}/>
@@ -25,7 +24,6 @@ export var MealList = React.createClass({
         {renderMeals()}
       </div>
     )
-
   }
 })
 

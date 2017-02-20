@@ -19,10 +19,10 @@ export var Today = React.createClass({
           return <Meal key={meal.id} {...meal}/>
         })
       } else {
-        return <h3>No meals scheduled for today!</h3>
+        return <h5 className='meal'>No meals scheduled for today!</h5>
       }
     }
-    
+
     return (
       <div>
         <h1 className="page-title">Today's Meals</h1>
