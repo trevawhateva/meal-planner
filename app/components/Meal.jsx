@@ -13,17 +13,30 @@ export var Meal = React.createClass({
             dispatch(actions.startAddToCalendar(id, date.format('MMM DD, YYYY')));
         }}/>;
       } else {
-        return <p>{scheduledFor}</p>;
+        return (
+          <div className='row scheduled'>
+            <div className='column'>
+              <p>{scheduledFor}</p>
+            </div>
+            <div className='column'>
+              <button class="close-button" aria-label="Close alert" type="button" onClick={() => {
+                dispatch(actions.startAddToCalendar(id, null));
+              }}>
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        )
       }
     };
 
     return (
       <div className='row meal'>
-        <div className='column large-8'>
+        <div className='column large-7'>
           <p>{title}</p>
           <p className='meal__subtext'>{ingredients}</p>
         </div>
-        <div className='column large-4 date-picker'>
+        <div className='column large-5 date-picker'>
           {renderDate()}
         </div>
       </div>
