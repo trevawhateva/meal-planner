@@ -1,10 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import moment from 'moment'
 var MealAPI = require('MealAPI');
 
 export var Grocery = React.createClass({
   render() {
     var {meals} = this.props;
+    var today = moment().format('MMM DD, YYYY');
+    var filteredMeals = meals.filter((value) => {
+      return value.scheduledFor === today;
+    });
 
     var ingredients = [];
     var renderGroceries = () => {
@@ -17,12 +22,18 @@ export var Grocery = React.createClass({
           </div>
         )
       } else {
-        ingredients = MealAPI.parseIngredients(meals);
-        console.log(ingredients);
+        ingredients = MealAPI.parseIngredients(filteredMeals);
+        
         return (
           <div className='row meal'>
             <div className='column large-8'>
-              <p className="container__message">{ingredients}</p>
+              <ul className="container__message">
+                {ingredients.map((ingredient) => {
+                  return (
+                    <li key={ingredient}>{ingredient}</li>
+                  )
+                })}
+              </ul>
             </div>
           </div>
         )

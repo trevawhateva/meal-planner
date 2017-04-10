@@ -74,3 +74,19 @@ export var startAddToCalendar = (id,date) => {
     });
   };
 };
+
+export var deleteMeal = () => {
+  return {
+    type: 'DELETE_MEAL'
+  };
+};
+
+export var startDeleteMeal = (id) => {
+  return (dispatch, getState) => {
+    var mealRef = firebaseRef.child(`meals/${id}`);
+
+    return mealRef.remove().then(() => {
+      dispatch(deleteMeal(id));
+    });
+  };
+};

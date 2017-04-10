@@ -1,4 +1,5 @@
 export var mealsReducer = (state = [], action) => {
+
   switch (action.type) {
     case 'ADD_MEAL':
       return [
@@ -21,6 +22,13 @@ export var mealsReducer = (state = [], action) => {
           return meal;
         }
       });
+    case 'DELETE_MEAL':
+      let newState = Object.assign([], state);
+      const indexOfMealToDelete = state.findIndex(meal => {
+        return meal.id == action.id;
+      });
+      newState.splice(indexOfMealToDelete, 1);
+      return newState;
     default:
       return state;
   }

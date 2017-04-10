@@ -19,7 +19,7 @@ export var Meal = React.createClass({
               <p>{scheduledFor}</p>
             </div>
             <div className='column'>
-              <button class="close-button" aria-label="Close alert" type="button" onClick={() => {
+              <button aria-label="Close alert" type="button" onClick={() => {
                 dispatch(actions.startAddToCalendar(id, null));
               }}>
                 <span aria-hidden="true">&times;</span>
@@ -33,7 +33,10 @@ export var Meal = React.createClass({
     return (
       <div className='row meal'>
         <div className='column large-7'>
-          <p>{title}</p>
+          <p>{title} <a href='#' onClick={(e) => {
+            e.preventDefault();
+            dispatch(actions.startDeleteMeal(id));
+          }}>delete</a></p>
           <p className='meal__subtext'>{ingredients}</p>
         </div>
         <div className='column large-5 date-picker'>
